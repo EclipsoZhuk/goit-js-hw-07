@@ -10,23 +10,11 @@ const ingredients = [
 // Получение ссылки на тег с id #ingredients
 const listRef = document.querySelector('#ingredients');
 
-// Сделано по заданию
 const ingredientsEl = ingredients.map(elem => {
     const itemEl = document.createElement('li');
-    itemEl.textContent = elem;
+    itemEl.append(elem);
 
-    return listRef.append(itemEl);
+    return itemEl;
 });
 
-// Рабочая функция
-
-// const makeListIngredients = ingredients => {
-//     return ingredients.map(ingredient => {
-//         const itemEl = document.createElement('li');
-//         itemEl.textContent = ingredient;
-
-//         return itemEl;
-//     });
-// };
-// const elements = makeListIngredients(ingredients);
-// listRef.append(...elements);
+listRef.append(...ingredientsEl);
