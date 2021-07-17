@@ -1,13 +1,19 @@
 const inputRef = document.querySelector('#validation-input');
 
-inputRef.addEventListener('blur', onInputChange);
+inputRef.addEventListener('blur', onInput);
 
-function onInputChange() {
-    if (inputRef.value.length === 6) {
-        inputRef.classList.add('valid');
-        inputRef.classList.remove('invalid');
-    } else {
-        inputRef.classList.remove('valid');
-        inputRef.classList.add('invalid');
-    }
+function onInput({ target: { value, dataset } }) {
+    // if (inputRef.value.length === +inputRef.dataset.length) {
+    //     togleClass('valid', 'invalid');
+    // } else {
+    //     togleClass('invalid', 'valid');
+    // }
+    value.length === +dataset.length
+        ? togleClass('valid', 'invalid')
+        : togleClass('invalid', 'valid');
 }
+
+const togleClass = (add, remove) => {
+    inputRef.classList.remove(remove);
+    inputRef.classList.add(add);
+};
